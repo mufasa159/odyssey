@@ -1,0 +1,163 @@
+.flex-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #1e1e2f;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #63FFDA;
+}
+
+.card input,
+.card textarea {
+    background-color: #11131f;
+}
+
+.card button {
+    margin: 20px 0px 10px 0px;
+    border: 1px solid #63FFDB5E;
+    background-color: transparent;
+    color: #63FFDA;
+    transition: 0.2s;
+}
+
+.card button:hover,
+.card button:focus {
+    border: 1px solid #63FFDB;
+    background-color: transparent;
+}
+
+.card-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-col {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.card .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px auto;
+    gap: 15px;
+}
+
+.card button.page-navigation {
+    font-size: 0.8rem;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.card button.page-navigation:disabled {
+    color: #44475a;
+    cursor: not-allowed;
+}
+
+.location-list-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.location-list-container .location-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.location-list-container .pagination {
+    flex-shrink: 0;
+}
+
+.location-item {
+    background-color: #11131f;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.location-item-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card p,
+.location-item-data p,
+.settings-item p {
+    font-size: 0.9rem;
+    color: #d4d4d4;
+}
+
+.card p.subtext {
+    font-size: 0.8rem;
+    color: #757a98;
+}
+
+.location-item-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 0px;
+}
+
+.location-item-actions button {
+    margin: 0;
+    padding: 6px;
+    border: none;
+}
+
+.location-item-actions button:hover,
+.location-item-actions button:focus {
+    border: none;
+    background-color: #1e1e2f;
+}
+
+.settings-item {
+    background-color: #11131f;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}

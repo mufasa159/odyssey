@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #080A15;
+    color: #F6F6F6;
+}
+
+input,
+textarea {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    padding: 10px;
+    border: 1px solid #1e2135;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #1e2135;
+    color: #d4d4d4;
+    transition: border-color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #757a98;
+    font-weight: 400;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+    height: 55px;
+}
+
+input[type="checkbox"]::before,
+input[type="checkbox"]:checked::before,
+input[type="checkbox"]:indeterminate::before {
+    position: absolute;
+    top: 55%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]::before {
+    content: url("/static/assets/icons/unchecked.svg");
+}
+
+input[type="checkbox"]:checked::before {
+    content: url("/static/assets/icons/checked.svg");
+}
+
+input[type="checkbox"]:indeterminate::before {
+    content: url("/static/assets/icons/indeterminate.svg");
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+    border: 1px solid #63ffdb5e;
+    outline: none;
+}
+
+label {
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: block;
+    color: #757a98;
+    padding-left: 5px;
+}
+
+button {
+    font-family: "DM Sans", sans-serif;
+    background-color: #63FFDA;
+    color: #080A15;
+    border: 1px solid #080A15;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #52e6c3;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.error,
+.success {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    background: #080A15;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    z-index: 1000;
+}
+
+.error {
+    color: #FF4D4D;
+    border: 1px solid #FF4D4D;
+}
+
+.success {
+    color: #63FFDA;
+    border: 1px solid #63FFDA;
+}
+
+a {
+    color: #459fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: none;
+    border-bottom: 1px solid #459fff;
+}

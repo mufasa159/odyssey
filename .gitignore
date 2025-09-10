@@ -1,0 +1,9 @@
+draft.json
+.DS_Store
+._*
+.vscode
+*.db
+__pycache__
+*.pyc
+.venv
+.env

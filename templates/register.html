@@ -1,0 +1,60 @@
+{% extends "_layout.html" %}
+
+{% block title %}Odyssey - Sign Up{% endblock %}
+
+{% block meta %}
+    <link rel="stylesheet" href="static/styles/form.css" />
+{% endblock %}
+
+{% block main %}
+
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    {% if success %}<div class="success">{{ success }}</div>{% endif %}
+    {% if not allow_registration %}
+        <div class="error">
+            Registration is currently disabled by the administrator
+        </div>
+    {% endif %}
+
+    <div class="auth-wrapper">
+        <form method="post" action="/register">
+            <div class="form-header">
+                <img src="static/assets/favicon.svg" alt="Odyssey Logo" class="logo"/>
+                <h1>Odyssey</h1>
+            </div>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                placeholder="Full Name"
+                required
+            >
+            <input
+                type="text"
+                id="username"
+                name="username"
+                autocomplete="username"
+                placeholder="Username"
+                required
+            >
+            <input
+                type="password"
+                id="password"
+                name="password"
+                autocomplete="new-password"
+                placeholder="Password"
+                required
+            >
+            <div class="form-actions">
+                <a href="/login">Already have an account?</a>
+                <button
+                    type="submit"
+                    {% if not allow_registration %}disabled title="Registration is currently disabled by the administrator"{% endif %}
+                >
+                    SIGN UP →
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

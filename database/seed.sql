@@ -1,0 +1,1 @@
+INSERT INTO configs (key, value) VALUES ('allow_registration', 'true');

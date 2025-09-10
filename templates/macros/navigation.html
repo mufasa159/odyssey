@@ -1,0 +1,91 @@
+{% macro navigation(user_fullname) -%}
+    <div class="navigation">
+        <div class="navigation-header">
+            <img src="static/assets/favicon.svg" alt="Logo" />
+            {% if not user_fullname %}
+                <h1>Odyssey</h1>
+            {% else %}
+                <h1>Welcome, {{ user_fullname }}</h1>
+            {% endif %}
+        </div>
+        <nav class="navigation-menu">
+            <ul>
+                <li><a href="/">Maps</a></li>
+                <li><a href="/logout" class="logout">Logout</a></li>
+            </ul>
+        </nav>
+        <style>
+            .navigation {
+                width: 100%;
+                border: 1px solid #1E2135;
+                background-color: #1e2135;
+                color: #F6F6F6;
+                display: flex;
+                flex-direction: row;
+                border-radius: 8px;
+                padding: 0px 10px;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+            }
+
+            .navigation-header {
+                display: flex;
+                align-items: center;
+            }
+
+            .navigation-header img {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+            }
+
+            .navigation-header h1 {
+                font-size: 1.1em;
+                font-weight: 500;
+                margin: 0;
+            }
+
+            .navigation-header,
+            .navigation-menu {
+                padding: 10px;
+            }
+
+            .navigation-menu {
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: flex-end;
+            }
+
+            .navigation-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                gap: 1px;
+            }
+
+            .navigation-menu li {
+                margin: 0;
+            }
+
+            .navigation-menu a {
+                color: #63FFDA;
+                text-decoration: none;
+                font-weight: 400;
+                border: 1px solid transparent;
+                padding: 10px;
+                transition: 0.2s;
+            }
+
+            .navigation-menu a.logout {
+                color: #FF4C60;
+            }
+
+            .navigation-menu a:hover {
+                background-color: #111422;
+            }
+        </style>
+    </div>
+{%- endmacro %}

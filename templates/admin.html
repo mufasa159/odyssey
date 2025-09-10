@@ -1,0 +1,133 @@
+{% extends "_layout.html" %}
+
+{% block title %}Odyssey - Admin{% endblock %}
+
+{% block meta %}
+    <link rel="stylesheet" href="static/styles/admin.css" />
+    <script src="static/scripts/admin.js" defer></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        {{ navigation(user_fullname) }}
+
+        <div class="flex-grid-layout">
+            <div class="card">
+                <h2 class="card-title">Add New Location</h2>
+                <form id="add-location-form" method="POST" action="/locations/create">
+                    <label for="location-name">Place *</label>
+                    <input
+                        type="text"
+                        id="location-name"
+                        name="location-name"
+                        maxlength="100"
+                        required
+                    />
+
+                    <label for="location-description">Description *</label>
+                    <textarea
+                        type="text"
+                        id="location-description"
+                        name="location-description"
+                        maxlength="250"
+                        required
+                    ></textarea>
+
+                    <div class="card-row">
+                        <div class="card-col">
+                            <label for="location-latitude">Latitude</label>
+                            <input
+                                type="number"
+                                id="location-latitude"
+                                step="0.000001"
+                                name="location-latitude"
+                                inputmode="numeric"
+                                pattern="[0-9]*"
+                            />
+                        </div>
+                        <div class="card-col">
+                            <label for="location-longitude">Longitude</label>
+                            <input
+                                type="number"
+                                id="location-longitude"
+                                step="0.000001"
+                                name="location-longitude"
+                                inputmode="numeric"
+                                pattern="[0-9]*"
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" id="create-location-button" data-loading="LOADING...">+ CREATE</button>
+                </form>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Manage Locations</h2>
+
+                <div class="location-list-container">
+
+                    {% for page_num, page in locations.items() %}
+                        <div
+                            class="location-list"
+                            data-page="{{ page_num }}"
+                            {% if loop.first %}style="display: block;"{% else %}style="display: none;"{% endif %}
+                        >
+
+                            {% for location in page %}
+                                <div class="location-item" data-id="{{ location.id }}" data-index="{{ loop.index0 }}">
+                                    <div class="location-item-data">
+                                        <p>{{ location.name }}</p>
+                                        <p class="subtext">Created: {{ location.created_at }}</p>
+                                    </div>
+                                    <div class="location-item-actions">
+                                        <button
+                                            class="edit-location-button"
+                                            data-location-id="{{ location.id }}"
+                                            title="Edit Location"
+                                        >
+                                            <img src="static/assets/icons/edit.svg" alt="Edit" />
+                                        </button>
+
+                                        <button
+                                            class="delete-location-button"
+                                            data-location-id="{{ location.id }}"
+                                            title="Delete Location"
+                                        >
+                                            <img src="static/assets/icons/delete.svg" alt="Delete" />
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="pagination">
+                        <button id="locations-pagination-prev" class="page-navigation">← Prev</button>
+                        <button id="locations-pagination-next" class="page-navigation">Next →</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="card-title">Settings</h2>
+                <div class="settings-item">
+                    <p>Allow registration</p>
+                    <input
+                        type="checkbox"
+                        id="allow-registration"
+                        name="allow-registration"
+                        {% if allow_registration %}checked{% endif %}
+                    />
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <p class="subtext">Total Locations: {{ location_count }}</p>
+                    <br />
+                    <p class="subtext">Developed by <a href='https://github.com/mufasa159' target="_blank">mufasa159</a></p>
+                    <p class="subtext">View <a href='https://github.com/mufasa159/odyssey' target="_blank">source code</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

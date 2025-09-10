@@ -1,0 +1,29 @@
+{% extends "_layout.html" %}
+
+{% block title %}Odyssey{% endblock %}
+
+{% block meta %}
+    <link rel="stylesheet" href="static/styles/home.css" />
+    <link rel="stylesheet" href="static/leaflet-1.9.4/leaflet.css" />
+{% endblock %}
+
+{% block main %}
+    <div id="preloader">
+        <img src="static/assets/loader.svg" alt="Loading..." />
+        <p><span>Odyssey V1</span></p>
+        <p>... loading, please wait ...</p>
+    </div>
+
+    {% if logged_in %}
+        <div class="admin-button">
+            <a href="/admin" title="Admin Panel">
+                Manage
+            </a>
+        </div>
+    {% endif %}
+
+    <div id="map"></div>
+
+    <script src="static/leaflet-1.9.4/leaflet.js"></script>
+    <script src="static/scripts/home.js"></script>
+{% endblock %}
