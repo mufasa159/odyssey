@@ -8,7 +8,7 @@ This is a work-in-progress interactive travel photography / blogging website. Bu
 1. Create a virtual environment:
 
    ```bash
-   python3 -m venv venv
+   python3 -m venv .venv
    ```
 2. Activate the virtual environment:
    ```bash
