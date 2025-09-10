@@ -1,8 +1,6 @@
 # Odyssey
 
-Starlette-based web application for displaying geographical locations on an interactive map.
-
-Contains simple user authentication and location management features with a SQLite database backend.
+This is a work-in-progress interactive travel photography / blogging website. Built with starlette, jinja2 and sqlite3.
 
 
 ## Development
@@ -34,3 +32,26 @@ Contains simple user authentication and location management features with a SQLi
    python3 scripts/seed.py
    ```
 7. Open your web browser and navigate to `http://127.0.0.1:8000/register` to create a new admin account.
+
+
+## Quick Demo
+
+https://github.com/user-attachments/assets/60215e27-aa76-4069-bb0d-18bfbb5c1fb9
+
+
+## Planned Features
+
+- [x] Map integration (leaflet & openstreetmap)
+- [x] User authentication
+- [ ] Admin panel
+  - [ ] UI
+  - [ ] CRUD
+    - [x] Create a new location
+    - [x] View a list of all locations
+    - [ ] Edit a location
+    - [x] Delete a location by its `id`
+    - [x] Config: functional `allow_registration` toggle
+  - [ ] Blog CMS
+  - [ ] Gallery CMS
+- [ ] Gallery integration
+- [ ] Blog integration
