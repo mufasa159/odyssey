@@ -1,6 +1,8 @@
 # Odyssey
 
-This is a work-in-progress interactive travel photography / blogging website. Built with starlette, jinja2 and sqlite3.
+This is an interactive map website. You can add/edit/delete locations on a map from the admin panel.
+
+Built with starlette, jinja2 and sqlite3.
 
 
 ## Development
@@ -45,13 +47,19 @@ https://github.com/user-attachments/assets/60215e27-aa76-4069-bb0d-18bfbb5c1fb9
 - [x] User authentication
 - [ ] Admin panel
   - [x] UI
-  - [ ] CRUD
+  - [x] CRUD
     - [x] Create a new location
     - [x] View a list of all locations
-    - [ ] Edit a location
+    - [x] Edit a location
     - [x] Delete a location by its `id`
     - [x] Config: functional `allow_registration` toggle
   - [ ] Blog CMS
   - [ ] Gallery CMS
 - [ ] Gallery integration
 - [ ] Blog integration
+- [ ] Improvements
+  - [ ] Reset location boundaries from edit form
+  - [ ] CSS variables for customizable themes
+  - [ ] Docker setup
+  - [ ] CD with automated tests
+
