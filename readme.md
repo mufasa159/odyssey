@@ -12,8 +12,8 @@ This is a work-in-progress interactive travel photography / blogging website. Bu
    ```
 2. Activate the virtual environment:
    ```bash
-   source venv/bin/activate  # unix / osx
-   venv\Scripts\activate     # windows
+   source .venv/bin/activate  # unix / osx
+   .venv\Scripts\activate     # windows
    ```
 3. Install the required packages:
    ```bash
@@ -44,7 +44,7 @@ https://github.com/user-attachments/assets/60215e27-aa76-4069-bb0d-18bfbb5c1fb9
 - [x] Map integration (leaflet & openstreetmap)
 - [x] User authentication
 - [ ] Admin panel
-  - [ ] UI
+  - [x] UI
   - [ ] CRUD
     - [x] Create a new location
     - [x] View a list of all locations
