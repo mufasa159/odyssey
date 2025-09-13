@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS users (
     "password" TEXT NOT NULL,
     "audit_log" TEXT DEFAULT '[]',
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    "updated_at" TIMESTAMP DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS locations (
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS locations (
     "latitude" DECIMAL(9,6),
     "metadata" TEXT DEFAULT '{}',
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    "updated_at" TIMESTAMP DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS locations_boundaries (
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS locations_boundaries (
     "location_id" INTEGER NOT NULL REFERENCES locations(id) ON DELETE CASCADE,
     "boundary" TEXT NOT NULL,
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    "updated_at" TIMESTAMP DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS configs (
@@ -32,5 +32,5 @@ CREATE TABLE IF NOT EXISTS configs (
     "key" TEXT NOT NULL UNIQUE,
     "value" TEXT NOT NULL,
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    "updated_at" TIMESTAMP DEFAULT NULL
 );
