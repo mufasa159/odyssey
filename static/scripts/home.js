@@ -106,9 +106,9 @@ fetch('/locations')
             }
         };
 
-        // show loading screen for at least 2 seconds because it looks cool
+        // show loading screen for at least 1 second because it looks cool
         const elapsedTime = Date.now() - loadStartTime;
-        const minDisplayTime = 2000;
+        const minDisplayTime = 1000;
 
         if (elapsedTime >= minDisplayTime) {
             hidePreloader();
