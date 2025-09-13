@@ -12,59 +12,20 @@
         {{ navigation(user_fullname) }}
 
         <div class="flex-grid-layout">
+
             <div class="card">
                 <h2 class="card-title">Add New Location</h2>
-                <form id="add-location-form" method="POST" action="/locations/create">
-                    <label for="location-name">Place *</label>
-                    <input
-                        type="text"
-                        id="location-name"
-                        name="location-name"
-                        maxlength="100"
-                        required
-                    />
-
-                    <label for="location-description">Description *</label>
-                    <textarea
-                        type="text"
-                        id="location-description"
-                        name="location-description"
-                        maxlength="250"
-                        required
-                    ></textarea>
-
-                    <div class="card-row">
-                        <div class="card-col">
-                            <label for="location-latitude">Latitude</label>
-                            <input
-                                type="number"
-                                id="location-latitude"
-                                step="0.000001"
-                                name="location-latitude"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                            />
-                        </div>
-                        <div class="card-col">
-                            <label for="location-longitude">Longitude</label>
-                            <input
-                                type="number"
-                                id="location-longitude"
-                                step="0.000001"
-                                name="location-longitude"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                            />
-                        </div>
-                    </div>
-
-                    <button type="submit" id="create-location-button" data-loading="LOADING...">+ CREATE</button>
-                </form>
+                {{ form_location("add") }}
             </div>
+
             <div class="card">
                 <h2 class="card-title">Manage Locations</h2>
 
-                <div class="location-list-container">
+                <div id="edit-location-container" class="edit-location-container">
+                    {{ form_location("edit") }}
+                </div>
+
+                <div id="location-list-container" class="location-list-container">
 
                     {% for page_num, page in locations.items() %}
                         <div
@@ -91,6 +52,7 @@
                                         <button
                                             class="delete-location-button"
                                             data-location-id="{{ location.id }}"
+                                            data-location-name="{{ location.name }}"
                                             title="Delete Location"
                                         >
                                             <img src="static/assets/icons/delete.svg" alt="Delete" />
@@ -107,6 +69,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="card">
                 <h2 class="card-title">Settings</h2>
                 <div class="settings-item">
@@ -119,6 +82,7 @@
                     />
                 </div>
             </div>
+
             <div class="card">
                 <div>
                     <p class="subtext">Total Locations: {{ location_count }}</p>

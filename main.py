@@ -7,7 +7,9 @@ from controllers.configs import (
 from controllers.locations import (
     get_all_locations,
     get_all_locations_minimal_by_pages,
+    get_location_by_id,
     add_location,
+    edit_location,
     delete_location,
 )
 from controllers.auth import (
@@ -29,7 +31,8 @@ from models.messages import message
 templates = Jinja2Templates(directory='templates')
 
 templates.env.globals.update({
-    'navigation': templates.get_template('macros/navigation.html').module.navigation
+    'navigation': templates.get_template('macros/navigation.html').module.navigation,
+    'form_location': templates.get_template('macros/form_location.html').module.form_location,
 })
 
 
@@ -97,7 +100,9 @@ app = Starlette(debug=True, routes=[
     Mount('/static', StaticFiles(directory='static'), name='static'),
 
     Route('/locations', get_all_locations, methods=['GET']),
-    Route('/locations/create', add_location, methods=['POST']),
+    Route('/locations/get/{location_id:int}', get_location_by_id, methods=['GET']),
+    Route('/locations/add', add_location, methods=['POST']),
+    Route('/locations/edit/{location_id:int}', edit_location, methods=['PUT']),
     Route('/locations/delete/{location_id:int}', delete_location, methods=['DELETE']),
 
     Route('/config/allow-registration', toggle_allow_registration, methods=['POST']),

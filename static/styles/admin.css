@@ -161,3 +161,7 @@
     height: 20px;
     cursor: pointer;
 }
+
+.edit-location-container {
+    display: none;
+}

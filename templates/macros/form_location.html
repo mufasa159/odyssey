@@ -1,0 +1,64 @@
+{% macro form_location(mode) -%}
+    {% if mode != "edit" and mode != "add" %}
+        <p style="color: #FF4D4D;">Invalid mode specified in "form_location" macro. Use "add" or "edit".</p>
+    {% else %}
+        <form id="{{ mode }}-location-form" method="POST" action="/locations/{{ mode }}">
+            {% if mode == "edit" %}
+                <input type="hidden" id="{{ mode }}-location-id" name="{{ mode }}-location-id" />
+            {% endif %}
+
+            <label for="{{ mode }}-location-name">Place *</label>
+            <input
+                type="text"
+                id="{{ mode }}-location-name"
+                name="{{ mode }}-location-name"
+                maxlength="100"
+                required
+            />
+
+            <label for="{{ mode }}-location-description">Description *</label>
+            <textarea
+                type="text"
+                id="{{ mode }}-location-description"
+                name="{{ mode }}-location-description"
+                maxlength="250"
+                required
+            ></textarea>
+
+            <div class="card-row">
+                <div class="card-col">
+                    <label for="{{ mode }}-location-latitude">Latitude</label>
+                    <input
+                        type="number"
+                        id="{{ mode }}-location-latitude"
+                        step="0.0000001"
+                        name="{{ mode }}-location-latitude"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                    />
+                </div>
+                <div class="card-col">
+                    <label for="{{ mode }}-location-longitude">Longitude</label>
+                    <input
+                        type="number"
+                        id="{{ mode }}-location-longitude"
+                        step="0.0000001"
+                        name="{{ mode }}-location-longitude"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                    />
+                </div>
+            </div>
+
+            <div class="location-actions">
+                {% if mode == "edit" %}
+                    <button type="submit" id="save-location-button" data-loading="SAVING...">SAVE</button>
+                    <button type="button" id="cancel-edit-location-button">CANCEL</button>
+                    <button type="button" id="delete-location-button" data-loading="DELETING...">DELETE</button>
+                {% elif mode == "add" %}
+                    <button type="submit" id="create-location-button" data-loading="LOADING...">+ CREATE</button>
+                {% endif %}
+            </div>
+        </form>
+    {% endif %}
+{%- endmacro %}

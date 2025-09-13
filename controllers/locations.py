@@ -64,7 +64,9 @@ async def get_all_locations_minimal_by_pages() -> dict[str, list]:
     return response
 
 
-def get_location_by_id(request: Request, location_id: int):
+def get_location_by_id(request: Request):
+    location_id = int(request.path_params.get('location_id', 0))
+
     conn = get_db_connection()
     q = 'SELECT * FROM locations WHERE id = ?'
     location = conn.execute(q, (location_id,)).fetchone()
@@ -164,6 +166,62 @@ async def add_location(request: Request):
             'message': 'Location added',
             'location_id': location_id
         }
+    )
+
+
+@require_auth()
+async def edit_location(request: Request):
+    location_id = request.path_params.get('location_id')
+
+    if location_id:
+        location_id = int(location_id)
+
+    else:
+        return JSONResponse(
+            status_code=400,
+            content={'error': 'Location ID is required'}
+        )
+
+    data = await request.json()
+
+    name = str(data.get('name')).strip()
+    description = str(data.get('description')).strip()
+    latitude = float(data.get('latitude')) if data.get('latitude') else None
+    longitude = float(data.get('longitude')) if data.get('longitude') else None
+    metadata = data.get('metadata', {})
+
+    if not all([name, description]):
+        return JSONResponse(
+            status_code=400,
+            content={'error': 'Missing required fields'}
+        )
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        'UPDATE locations SET name = ?, description = ?, latitude = ?, longitude = ?, metadata = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
+        (
+            name,
+            description,
+            latitude,
+            longitude,
+            json.dumps(metadata) if metadata else None,
+            location_id
+        )
+    )
+    conn.commit()
+    rows_affected = cursor.rowcount
+    conn.close()
+
+    if rows_affected == 0:
+        return JSONResponse(
+            status_code=404,
+            content={'error': 'Location not found'}
+        )
+
+    return JSONResponse(
+        status_code=200,
+        content={'message': 'Location updated'}
     )
 
 
